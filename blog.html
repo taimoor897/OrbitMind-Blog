@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discover the Universe</title>
+  <link rel="stylesheet" href="blog.css">
+</head>
+<body>
+ <header class="hero">
+  <h1>OrbitMind🛰️</h1>
+  <h2>Discover the Universe</h2>
+  <div class="stars"></div>
+</header>
+
+
+
+ <section class="blog">
+    <h2>Latest Posts</h2>
+    <div class="blog-container">
+      <article class="blog-card">
+        <h3>The Future of Space Tech</h3>
+        <p>Exploring how AI and robotics are changing the way we travel beyond Earth.</p>
+         <a href="article1.html">Read More</a>
+      </article>
+
+      <article class="blog-card">
+        <h3>Satellite Internet</h3>
+        <p>How constellations of satellites are shaping global connectivity.</p>
+        <a href="#">Read More</a>
+      </article>
+
+      <article class="blog-card">
+        <h3>Life on Mars?</h3>
+        <p>From rovers to colonization — are we ready to make Mars our second home?</p>
+        <a href="#">Read More</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 OrbitMind. All Rights Reserved.</p>
+    <p>Made with 🚀 and curiosity.</p>
+  </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+  // Select all blog cards
+  const cards = document.querySelectorAll('.blog-card');
+
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;  // Mouse X inside card
+      const y = e.clientY - rect.top;   // Mouse Y inside card
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      // Calculate rotation (max 10deg tilt)
+      const rotateX = ((y - centerY) / centerY) * 10;
+      const rotateY = ((x - centerX) / centerX) * 10;
+
+      card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+      card.style.boxShadow = `0 20px 40px rgba(0, 198, 255, 0.5)`;
+    });
+
+    // Reset when mouse leaves
+    card.addEventListener('mouseleave', () => {
+      card.classList.add('reset');
+      card.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
+      card.style.boxShadow = `0 0 15px rgba(0,0,0,0.6)`;
+
+      setTimeout(() => card.classList.remove('reset'), 200);
+    });
+  });
+</script>
+
+</body>
+</html>
